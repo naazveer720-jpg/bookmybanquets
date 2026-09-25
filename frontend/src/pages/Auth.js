@@ -317,6 +317,7 @@ export const Register = () => {
       );
       return false;
     }
+    
 
     // Number required
     if (!/[0-9]/.test(form.password)) {
