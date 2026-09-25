@@ -12,19 +12,20 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: "*", 
     methods: ['GET', 'POST'],
     credentials: true
   }
 });
 
+
 // Security Middleware
-app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: "*", 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
 }));
+
 
 // Rate limiting
 const limiter = rateLimit({
